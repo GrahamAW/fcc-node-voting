@@ -1,0 +1,12 @@
+html
+  head
+    title My Site - #{title}
+    block scripts
+      script(src="todo.js")
+      link(href='https://fonts.googleapis.com/css?family=Raleway', rel='stylesheet')
+      link(href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" rel='stylesheet')
+    body
+    pre= h.dump(user)
+      .container
+        p Todo layout
+        block content
