@@ -31,3 +31,14 @@ mixin nav()
               li.divider
               li
                 a(href='#') One more separated link
+        ul.nav.navbar-nav.navbar-right
+          if user
+            li
+              a(href='/logout') Profile
+            li
+              a(href='/logout') Logout
+          else
+            li
+              a(href='/register') Register
+            li
+              a(href='/login') Login
