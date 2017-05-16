@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .col-sm-6.col-sm-offset-3
+    form.form(action="/account" method="POST")
+      .form-group
+        h2 Edit Account
+        label(for="name") Name
+        input.form-control(type="text" name="name" value=user.name)
+        label(for="password") Email
+        input.form-control(type="email" name="email" value=user.email)
+        input.btn.btn-primary(type="submit" value="Save")

@@ -26,8 +26,25 @@ html(lang='en')
       // you can use the class main-raised if you want the main area to be as a page with shadows
       .main
         .container
+          block messages
+            
+
+            if locals.flashes
+              - const categories = Object.keys(locals.flashes)
+              - const icons = { 'info': 'info_outline', 'success': 'check', 'warning': 'warning', 'danger': 'error_outline' }
+              each category in categories
+                each message in flashes[category]
+                  .alert(class=`alert-${category}`)
+                    .alert-icon
+                      i.material-icons 
+                        != icons[category]
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                      span(aria-hidden='true')
+                        i.material-icons clear
+                    = message
+                  
           // here you can add your content
-          // pre= h.dump(user)
+          //- pre= h.dump(locals.flashes)
           block content
   +footer()
   // Core JS Files

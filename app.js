@@ -3,6 +3,7 @@
 const dotenv = require('dotenv').config();
 const chalk = require('chalk');
 const mongoose = require('mongoose');
+const flash = require('connect-flash');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -67,12 +68,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// init out flash middleware
+app.use(flash());
+
 // variables that will be on all requests
 app.use((req, res, next) => {
   res.locals.h = helpers;
-  // res.locals.flashes = req.flash();
+  res.locals.flashes = req.flash();
   res.locals.user = req.user || null;
-  // res.locals.currentPath = req.path;
+  res.locals.currentPath = req.path;
   next();
 });
 
