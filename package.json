@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "engines": {
     "node": "7.10.0"
-  }
+  },
   "description": "Express starter for my node FCC projects",
   "main": "app.js",
   "scripts": {
