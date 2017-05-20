@@ -33,22 +33,20 @@ userSchema.pre('save', async function(next) {
 
 // called when a user has logged in using twitter. Finds the users profile
 // in the database, or if it doesn't exist, creates a new profile.
-userSchema.statics.twitterFindOrCreate = async function(profile) {
+userSchema.statics.twitterFindOrCreate = function(profile) {
   const that = this;
   return new Promise( async function(resolve, reject) {
-    // console.log(this);
     let user = await that.findOne({ twitterId: profile.id });
     if(user) {
       resolve({ user });
     } else {
       // setting email to profile.id@twitter because don't want to break
       // validations for my local auth stategy.
-      await that.create({
+      user = await that.create({
         email: profile.id + '@twitter.com',
         name: profile.displayName,
         twitterId: profile.id
       });
-      console.log(user);
       resolve(user);
     }
   });

@@ -11,12 +11,12 @@ passport.use(new TwitterStrategy({
     callbackURL: 'http://127.0.0.1:7378/login/twitter/done'
   },
   async function(token, tokenSecret, profile, cb) {
-    console.log("passport twitter called!");
     user = await User.twitterFindOrCreate(profile);
     return cb(null, user);
   }));
 
-// TODO:
+// TODO: Everything seems to be working even though this poassport-local-mongoose
+// boiler plate code was replaced.
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 passport.serializeUser(function(user, cb) {
