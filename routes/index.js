@@ -3,6 +3,7 @@ const router = express.Router();
 const homeController = require('../controllers/homeController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const pollController = require('../controllers/pollController');
 const {
   catchErrors
 } = require('../handlers/errorHandlers');
@@ -31,5 +32,8 @@ router.get('/logout', authController.logout);
 
 router.get('/account', authController.isLoggedIn, userController.account);
 router.post('/account', authController.isLoggedIn, catchErrors(userController.updateAccount));
+
+router.get('/add-poll', authController.isLoggedIn, pollController.addPoll);
+router.post('/add-poll', authController.isLoggedIn, catchErrors(pollController.addPollSubmit));
 
 module.exports = router;

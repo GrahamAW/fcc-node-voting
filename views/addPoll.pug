@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .col-sm-6.col-sm-offset-3
+    form.form(method="POST" action="/add-poll")
+      .form-group
+        h3 Add Poll
+        label(for="question") Poll Question
+        input.form-control(type="text" name="question")
+        hr
+        label(for="answer") Answers
+        input.form-control(type="text" name="answers")
+        input.form-control(type="text" name="answers")
+        input.btn.btn-primary(type="submit" value="Add")
