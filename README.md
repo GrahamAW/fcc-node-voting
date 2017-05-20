@@ -1,3 +1,3 @@
-# node-auth
+# fcc-node-voting
 
-Express starter with auth for my node freeCodeCamp projects.
+FCC node voting project.
